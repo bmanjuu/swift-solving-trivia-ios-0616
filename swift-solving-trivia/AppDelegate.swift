@@ -8,13 +8,13 @@
 
 import UIKit
 
-UIApplicationMain
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     //What is the only state whose capital contains none of the characters as the state name?
     
-    let statesAndCapitals = [
+    var statesAndCapitals : [String:String] = [
         "Alabama" : "Montgomery",
         "Alaska" : "Juneau",
         "Arizona" : "Phoenix",
@@ -67,19 +67,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         "Wyoming" : "Cheyenne",
         ]
     
+    // print(statesAndCapitals)
+    
+    
     func solveTrivia(triviaDictionary: [String:String]) -> String {
         
+        var triviaAnswer = ""
+        
         for (state, capital) in triviaDictionary {
-            let stateLetters = state.characters
-            let capitalLetters = capital.characters
+            let stateLetters = Array(state.lowercaseString.characters)
+            let capitalLetters = Array(capital.lowercaseString.characters)
             
-            print(stateLetters)
-            print(capitalLetters)
+            var commonLetter = false
+            
+            for letter in capitalLetters {
+                if letter != " " && stateLetters.contains(letter) {
+                    commonLetter = true
+                    break
+                }
+            }
+            
+            if commonLetter == false {
+                triviaAnswer = state
+            }
+            
         }
         
-        return "COMPLETE THE FUNCTION"
+        return triviaAnswer
     }
     
 //THE END
 }
+
 
