@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             if commonLetter == false {
+                // if after the above for-loop commonLetter remains false, then the state and capital do not share any letters in common, and the current state we are looping through in the outer for-loop (for (state,capital) in triviaDictionary) is the answer!
                 triviaAnswer = state
             }
             
